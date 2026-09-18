@@ -1,0 +1,12 @@
+[
+  {"id":1,"name":"Doro Wat","price":240,"category":"Meat","spicy":true,"special":true,"description":"Spicy chicken stew with berbere, served with injera — today's Bole special."},
+  {"id":2,"name":"Kitfo","price":260,"category":"Meat","spicy":true,"special":true,"description":"Minced raw beef with mitmita and niter kibbeh."},
+  {"id":3,"name":"Tibs","price":280,"category":"Meat","spicy":false,"special":false,"description":"Sautéed beef with onions, rosemary, and peppers."},
+  {"id":4,"name":"Shiro","price":120,"category":"Vegan","spicy":false,"special":true,"description":"Chickpea stew — a Habesha classic, mild and filling."},
+  {"id":5,"name":"Misir Wat","price":110,"category":"Vegan","spicy":true,"special":false,"description":"Red lentil stew simmered with berbere."},
+  {"id":6,"name":"Gomen","price":100,"category":"Vegan","spicy":false,"special":false,"description":"Collard greens cooked with garlic and oil."},
+  {"id":7,"name":"Firfir","price":150,"category":"Breakfast","spicy":true,"special":false,"description":"Torn injera mixed with spicy sauce."},
+  {"id":8,"name":"Ful","price":90,"category":"Breakfast","spicy":false,"special":true,"description":"Fava beans with bread, onion, and tomato."},
+  {"id":9,"name":"Beyaynetu","price":200,"category":"Vegan","spicy":false,"special":false,"description":"A mixed platter of stews on injera — share with a friend."},
+  {"id":10,"name":"Dulet","price":230,"category":"Meat","spicy":true,"special":false,"description":"Minced organ meat with mitmita, onion, and jalapeño."}
+]
