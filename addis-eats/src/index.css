@@ -28,6 +28,11 @@ textarea {
   font: inherit;
 }
 
+:focus-visible {
+  outline: 2px solid #222;
+  outline-offset: 2px;
+}
+
 code {
   font-family: Consolas, monospace;
   font-size: 0.9em;
@@ -325,16 +330,82 @@ code {
   background: #fff;
 }
 
+.checkout-form input[aria-invalid="true"],
+.checkout-form select[aria-invalid="true"],
+.checkout-form textarea[aria-invalid="true"] {
+  border: 2px solid #c0392b;
+  outline: 2px dashed #c0392b;
+}
+
 .field-error {
   margin: -0.2rem 0 0.5rem;
   color: #c0392b;
   font-size: 0.9rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.field-error::before {
+  content: "⚠️";
 }
 
 .field-hint {
   margin: -0.2rem 0 0.5rem;
   color: #666;
   font-size: 0.85rem;
+}
+
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  padding: 1rem;
+}
+
+.modal-dialog {
+  max-width: 460px;
+  width: 100%;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  padding: 1.5rem;
+}
+
+.modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.75rem;
+}
+
+.modal-header h3 {
+  margin: 0;
+  font-size: 1.3rem;
+}
+
+.modal-close {
+  background: transparent;
+  border: none;
+  font-size: 1.5rem;
+  line-height: 1;
+  cursor: pointer;
+  padding: 0.25rem 0.5rem;
+  border-radius: 6px;
+}
+
+.modal-close:hover {
+  background: #f3e7cd;
+}
+
+.modal-body p {
+  margin: 0 0 1.25rem;
+  color: #444;
 }
 
 .specials-grid {

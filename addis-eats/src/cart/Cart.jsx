@@ -1,5 +1,9 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useCartStore } from "./cartStore";
+import CartPanel from "./CartPanel";
+import Button from "../ui/Button";
+import Modal from "../ui/Modal";
 import EmptyState from "../ui/EmptyState";
 
 function Cart() {
@@ -7,6 +11,9 @@ function Cart() {
   const remove = useCartStore((s) => s.remove);
   const clear = useCartStore((s) => s.clear);
   const total = (items || []).reduce((sum, item) => sum + item.price, 0);
+
+  // State design (Day 35 brief): "Whether a modal is open -> The component that opens it"
+  const [confirmClearOpen, setConfirmClearOpen] = useState(false);
 
   if (!(items || []).length) {
     return (
@@ -29,33 +36,47 @@ function Cart() {
           <p className="eyebrow">Cart</p>
           <h2>Your order</h2>
         </div>
-        <button type="button" className="btn ghost small" onClick={clear}>
+        <Button
+          variant="ghost"
+          size="small"
+          onClick={() => setConfirmClearOpen(true)}
+        >
           Clear cart
-        </button>
+        </Button>
       </div>
 
-      <ul className="cart-list">
-        {items.map((item) => (
-          <li key={item.lineId}>
-            <div>
-              <strong>{item.name}</strong>
-              <span className="muted"> · {item.price} ETB</span>
-            </div>
-            <button
-              type="button"
-              className="btn ghost small"
-              onClick={() => remove(item.lineId)}
-            >
-              Remove
-            </button>
-          </li>
-        ))}
-      </ul>
+      <CartPanel items={items} onRemove={remove} />
 
       <p className="total">Total: {total} ETB</p>
       <Link className="btn" to="/checkout">
         Go to checkout
       </Link>
+
+      <Modal
+        isOpen={confirmClearOpen}
+        title="Clear your order?"
+        onClose={() => setConfirmClearOpen(false)}
+      >
+        <p>Are you sure you want to remove all dishes from your cart?</p>
+        <div className="card-actions" style={{ justifyContent: "flex-end" }}>
+          <Button
+            variant="ghost"
+            size="small"
+            onClick={() => setConfirmClearOpen(false)}
+          >
+            Keep items
+          </Button>
+          <Button
+            size="small"
+            onClick={() => {
+              clear();
+              setConfirmClearOpen(false);
+            }}
+          >
+            Yes, clear cart
+          </Button>
+        </div>
+      </Modal>
     </section>
   );
 }

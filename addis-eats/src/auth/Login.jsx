@@ -2,12 +2,19 @@ import { useState } from "react";
 import { Navigate, useLocation, useNavigate } from "react-router-dom";
 import { useAuth } from "./useAuth";
 import { isValidEthiopianPhone } from "../api/dishes";
+import Button from "../ui/Button";
 
 function Login() {
   const { user, login } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
-  const from = location.state?.from?.pathname || "/menu";
+
+  const rawFrom = location.state?.from;
+  const from = typeof rawFrom === "string"
+    ? rawFrom
+    : rawFrom?.pathname
+      ? `${rawFrom.pathname}${rawFrom.search || ""}`
+      : "/menu";
 
   const [form, setForm] = useState({ name: "", phone: "" });
   const [touched, setTouched] = useState({});
@@ -74,9 +81,9 @@ function Login() {
           </p>
         )}
 
-        <button type="submit" className="btn" disabled={!canSubmit}>
+        <Button type="submit" disabled={!canSubmit}>
           Continue
-        </button>
+        </Button>
       </form>
     </section>
   );

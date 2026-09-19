@@ -1,9 +1,11 @@
-import { NavLink, Outlet } from "react-router-dom";
+import { NavLink, Outlet, useLocation } from "react-router-dom";
 import { useAuth } from "./auth/useAuth";
 import CartBadge from "./cart/CartBadge";
+import Button from "./ui/Button";
 
 function Layout() {
   const { user, logout } = useAuth();
+  const location = useLocation();
 
   return (
     <div className="app-shell">
@@ -34,12 +36,16 @@ function Layout() {
           {user ? (
             <>
               <span className="user-chip">Hi, {user.name}</span>
-              <button type="button" className="btn ghost small" onClick={logout}>
+              <Button variant="ghost" size="small" onClick={logout}>
                 Log out
-              </button>
+              </Button>
             </>
           ) : (
-            <NavLink to="/login" className="btn small">
+            <NavLink
+              to="/login"
+              state={{ from: location }}
+              className="btn small"
+            >
               Sign in
             </NavLink>
           )}
