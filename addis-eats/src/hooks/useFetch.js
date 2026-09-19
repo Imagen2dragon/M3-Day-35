@@ -1,10 +1,17 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export function useFetch(fetcher, deps = []) {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [reloadKey, setReloadKey] = useState(0);
+
+  const fetcherRef = useRef(fetcher);
+  useEffect(() => {
+    fetcherRef.current = fetcher;
+  }, [fetcher]);
+
+  const depsKey = JSON.stringify(deps);
 
   function retry() {
     setReloadKey((k) => k + 1);
@@ -19,7 +26,7 @@ export function useFetch(fetcher, deps = []) {
       setError(null);
 
       try {
-        const result = await fetcher(ctrl.signal);
+        const result = await fetcherRef.current(ctrl.signal);
         if (active) setData(result);
       } catch (err) {
         if (err?.name === "AbortError") return;
@@ -38,7 +45,7 @@ export function useFetch(fetcher, deps = []) {
       active = false;
       ctrl.abort();
     };
-  }, [...deps, reloadKey]);
+  }, [depsKey, reloadKey]);
 
   return { data, loading, error, retry };
 }

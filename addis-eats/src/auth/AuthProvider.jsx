@@ -1,6 +1,5 @@
-import { createContext, useMemo, useState } from "react";
-
-export const AuthContext = createContext(null);
+import { useMemo, useState } from "react";
+import { AuthContext } from "./AuthContext";
 
 const SESSION_KEY = "addis-eats-session";
 
