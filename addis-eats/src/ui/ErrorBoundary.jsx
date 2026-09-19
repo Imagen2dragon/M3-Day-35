@@ -1,4 +1,5 @@
 import { Component } from "react";
+import Button from "./Button";
 
 class ErrorBoundary extends Component {
   state = { error: null };
@@ -18,13 +19,9 @@ class ErrorBoundary extends Component {
           <section className="card state-card">
             <h2>Something broke in the kitchen</h2>
             <p>An unexpected render error stopped this screen.</p>
-            <button
-              type="button"
-              className="btn"
-              onClick={() => this.setState({ error: null })}
-            >
+            <Button onClick={() => this.setState({ error: null })}>
               Try again
-            </button>
+            </Button>
           </section>
         )
       );

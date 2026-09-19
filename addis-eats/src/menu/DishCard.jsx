@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import Button from "../ui/Button";
 
 function DishCard({ dish, onAdd }) {
   return (
@@ -13,9 +14,9 @@ function DishCard({ dish, onAdd }) {
         <Link className="btn ghost small" to={`/menu/${dish.id}`}>
           Details
         </Link>
-        <button type="button" className="btn small" onClick={() => onAdd(dish)}>
+        <Button size="small" onClick={() => onAdd(dish)}>
           Add to order
-        </button>
+        </Button>
       </div>
     </article>
   );

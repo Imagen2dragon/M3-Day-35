@@ -2,6 +2,7 @@ import { Link, useParams } from "react-router-dom";
 import { fetchDishById } from "../api/dishes";
 import { useFetch } from "../hooks/useFetch";
 import { useCartStore } from "../cart/cartStore";
+import Button from "../ui/Button";
 import Spinner from "../ui/Spinner";
 import ErrorNote from "../ui/ErrorNote";
 import EmptyState from "../ui/EmptyState";
@@ -42,9 +43,9 @@ function DishDetail() {
       <p>{dish.description}</p>
       <p className="price">{dish.price} ETB</p>
       <div className="card-actions">
-        <button type="button" className="btn" onClick={() => addItem(dish)}>
+        <Button onClick={() => addItem(dish)}>
           Add to order
-        </button>
+        </Button>
         <Link className="btn ghost" to="/menu">
           Back to menu
         </Link>

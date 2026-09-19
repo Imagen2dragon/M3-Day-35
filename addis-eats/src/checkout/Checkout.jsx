@@ -4,6 +4,7 @@ import { useAuth } from "../auth/useAuth";
 import { useCartStore } from "../cart/cartStore";
 import { AREAS, validateCheckout } from "./validate";
 import Field from "./Field";
+import Button from "../ui/Button";
 import EmptyState from "../ui/EmptyState";
 
 const INITIAL = {
@@ -190,9 +191,9 @@ function Checkout() {
           </p>
         )}
 
-        <button type="submit" className="btn" disabled={!isValid || submitting}>
+        <Button type="submit" disabled={!isValid || submitting}>
           {submitting ? "Placing order…" : `Pay ${total} ETB`}
-        </button>
+        </Button>
       </form>
     </section>
   );
