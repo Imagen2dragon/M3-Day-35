@@ -12,7 +12,6 @@ function Cart() {
   const clear = useCartStore((s) => s.clear);
   const total = (items || []).reduce((sum, item) => sum + item.price, 0);
 
-  // State design (Day 35 brief): "Whether a modal is open -> The component that opens it"
   const [confirmClearOpen, setConfirmClearOpen] = useState(false);
 
   if (!(items || []).length) {

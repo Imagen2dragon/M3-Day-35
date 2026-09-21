@@ -40,10 +40,6 @@ function Menu() {
           <p className="eyebrow">Menu</p>
           <h2>Today&apos;s dishes</h2>
         </div>
-        <p className="muted">
-          Filter in the URL:{" "}
-          <code>?category={category === "All" ? "…" : category}</code>
-        </p>
       </div>
 
       <CategoryBar

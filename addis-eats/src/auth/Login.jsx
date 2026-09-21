@@ -44,9 +44,6 @@ function Login() {
     <section className="card checkout-card">
       <p className="eyebrow">Sign in</p>
       <h2>Log in to check out</h2>
-      <p className="muted">
-        After login you return to <code>{from}</code>.
-      </p>
 
       <form className="checkout-form" onSubmit={handleSubmit} noValidate>
         <label htmlFor="name">Full name</label>

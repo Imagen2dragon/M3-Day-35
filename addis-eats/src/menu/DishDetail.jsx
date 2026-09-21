@@ -50,10 +50,6 @@ function DishDetail() {
           Back to menu
         </Link>
       </div>
-      <p className="hint">
-        <code>useParams()</code> returns a string — converted with{" "}
-        <code>Number(id)</code>.
-      </p>
     </section>
   );
 }

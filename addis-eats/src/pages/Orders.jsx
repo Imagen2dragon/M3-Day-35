@@ -9,6 +9,10 @@ function readOrders() {
   }
 }
 
+function formatOrderId(id) {
+  return String(id).slice(-6);
+}
+
 function Orders() {
   const location = useLocation();
   const placed = location.state?.placed;
@@ -40,8 +44,9 @@ function Orders() {
       </div>
 
       {placed && (
-        <p className="card" style={{ marginBottom: "1rem" }}>
-          ✅ Order #{placed.id} confirmed for {placed.area} · {placed.total} ETB
+        <p className="card order-confirmation">
+          ✅ Order #{formatOrderId(placed.id)} confirmed for {placed.area} ·{" "}
+          {placed.total} ETB
         </p>
       )}
 
@@ -50,7 +55,7 @@ function Orders() {
           <li key={order.id} className="card">
             <div>
               <strong>
-                #{order.id} · {order.customer}
+                #{formatOrderId(order.id)} · {order.customer}
               </strong>
               <p className="muted">
                 {order.area} · {order.payment} · {(order.items || []).length}{" "}

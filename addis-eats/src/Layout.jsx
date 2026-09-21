@@ -15,7 +15,6 @@ function Layout() {
             🍲
           </span>
           <div>
-            <p className="brand-kicker">Addis Ababa</p>
             <h1>Addis Eats</h1>
           </div>
         </div>
@@ -57,7 +56,7 @@ function Layout() {
       </main>
 
       <footer className="site-footer">
-        <p>Addis Eats · Day 35 mini-project · prices in ETB</p>
+        <p>Addis Eats</p>
       </footer>
     </div>
   );
