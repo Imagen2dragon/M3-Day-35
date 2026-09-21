@@ -50,3 +50,4 @@ function Modal({ isOpen, title, children, onClose }) {
 }
 
 export default Modal;
+

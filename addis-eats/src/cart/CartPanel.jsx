@@ -24,3 +24,4 @@ function CartPanel({ items, onRemove }) {
 }
 
 export default CartPanel;
+
